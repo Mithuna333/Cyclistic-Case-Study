@@ -5,7 +5,7 @@ In this project, I analyzed 12 months of historical data for a bike-share compan
 
 A detailed explanation of the project is provided below. 
 
-## Table of Content
+## Table of Contents
 * Background
 * Ask
 * Prepare
@@ -19,7 +19,7 @@ Cyclistic is a bike-share company based in Chicago. The company currently has 3 
 
 Because the financial analysts of Cyclistic have concluded that members are more profitable than casual riders, the director of marketing believes maximizing the number of annual members is the way for the company to succeed. 
 
-The following data analysis phases were used:
+The following data analysis phases were followed:
 * Ask
 * Prepare
 * Process
@@ -65,14 +65,14 @@ Each data file is organized as follows:
 * member_casual
     * This column provides the type of customer that the data belongs to.
 
-Because the data is supposed to be collected by Cyclistic according to the scenario, it is reliable and original. The data is taken from the past 12 months, which makes it comprehensive and current. As it's a primary data, it doesn't need any citation. This means, the data ROCCCs!
+Because the data is supposed to be collected by Cyclistic according to the scenario, it is reliable and original. The data is taken from the past 12 months, which makes it comprehensive and current. As it's primary data, it doesn't need any citation. This means, the data ROCCCs!
 
-The data's integrity was checked using Excel by checking for missing values, ensuring no duplicates existed, and the values in each column are accurate. 
+The data's integrity was checked using Excel by checking for missing values, duplicates, and accuracy. 
 
 ## Process
-During this phase, the data was processed for analysis. This was done using multiple tools so the steps will be outlined accoring to each tool used. 
+During this phase, the data was processed for analysis. This was done using multiple tools so the steps will be outlined according to each tool used. 
 
-Excel processing steps:
+**Excel processing steps:**
 1) Added ride_length column by subtracting started_at from ended_at to determine the total ride length, formatted as hh:mm:ss.
 2) Added season column according to the following months:
    * Spring: March-May
@@ -80,14 +80,15 @@ Excel processing steps:
    * Fall: September-November
    * Winter: December-February
 3) Removed duplicates with the excel function of the same name.
-4) Removed data outside of the ride_length of 0:01:00 and 2:59:59
+4) Removed data outside of the ride_length of 0:01:00 and 2:59:59.
    * The data outside this range was deemed irrelevant as data under the range did not change locations in the 59 seconds that was recorded as the ride length. This data was most likely a case of customers changing their mind after starting the ride. The data over 3 hours was very few and contained extreme outliers. Data outside this range comprised of less than 4% of the total data so there was no issue in excluding them.
 5) Added a column titled ride_length_secs with values being ride_length values converted from hh:mm:ss to seconds. 
 6) Removed data without end latitude and longitude or data with 0 for end latitude and longitude.
    * These data were incorrect.
 7) Added a column for start_date and start_time for hourly trend.
 
-RStudio processing steps:
+
+**RStudio processing steps:**
 1) After installing and loading the appropriate packages, the Excel processed data files were merged into one dataframe with the following code: 
 
 _cyclistic_df <- list.files(path="C:/Mithuna/Data Analytics/Case Study 1/load_to_R", pattern = "*.csv", full.names = TRUE) %>% 
@@ -108,13 +109,13 @@ _cyclistic_df$end_station_id[cyclistic_df$end_station_id == ''] <- '22222'_
 
 _write.csv(cyclistic_df, "C:/Mithuna/Data Analytics/Case Study 1/output_r/cyclistic_df.csv", row.names = FALSE )_
 
-SQL processing steps:
-1) The csv file was imported into SQL using [custom schema](https://github.com/Mithuna333/Cyclistic-Case-Study/blob/main/SQL%20Custom%20Schema)
+**SQL processing steps:**
+1) The csv file was imported into SQL using [custom schema](https://github.com/Mithuna333/Cyclistic-Case-Study/blob/main/SQL%20Custom%20Schema).
 
 2) Data used for testing, labeled with the tags "Test", "Temp", "Check", and "Divvy" in the start_station_name or end_station_name were removed with the following code:
 ![image](https://github.com/Mithuna333/Cyclistic-Case-Study/assets/141884378/2083b487-6192-4f6d-affd-f23f802f183a)
 
-3) Data was double checked to ensure there are no [null values](https://github.com/Mithuna333/Cyclistic-Case-Study/blob/main/SQL%20Checking%20Null%20Values).
+3) Data was double checked to ensure there were no [null values](https://github.com/Mithuna333/Cyclistic-Case-Study/blob/main/SQL%20Checking%20Null%20Values).
 
 4) The necessary columns were selected for export with the following code:
 ![image](https://github.com/Mithuna333/Cyclistic-Case-Study/assets/141884378/f743ecdb-aeca-4ee3-a10c-8bb6ddcbdc1f)
@@ -130,7 +131,7 @@ For this case study, Tableau was enough to analyze and create important visuals.
 * Average ride length in seconds for each customer type by season, month, and day of week. This was converted to minutes in Excel later.
 
 ## Share
-The Tableau dashboard with all the visuals associated with the case study can be found [here](link here).
+The Tableau dashboard with all the visuals associated with the case study can be found [here](https://public.tableau.com/views/CyclisticBike-ShareCaseStudy_16916440658720/Story1?:language=en-US&:display_count=n&:origin=viz_share_link).
 
 ## Act
 The top 3 recommendations based on the insights gathered can be found in the [stakeholder presentation](https://github.com/Mithuna333/Cyclistic-Case-Study/blob/main/Cyclistic%20Bike%20Share.pptx).
