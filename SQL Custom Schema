@@ -1,0 +1,100 @@
+The custom schema used to import the RStudio processed csv file is as follows:
+
+[ 
+{ "description": "ride id", 
+"mode": "NULLABLE", 
+"name": "ride_id", 
+"type": "STRING" }, 
+
+{ "description": "rideable type", 
+"mode": "NULLABLE", 
+"name": "rideable_type", 
+"type": "STRING" }, 
+
+
+{ "description": "started at date", 
+"mode": "NULLABLE", 
+"name": "started_at", 
+"type": "STRING" }, 
+
+{ "description": "ended at date", 
+"mode": "NULLABLE", 
+"name": "ended_at", 
+"type": "STRING" }, 
+
+{ "description": "start station name", 
+"mode": "NULLABLE", 
+"name": "start_station_name", 
+"type": "STRING" }, 
+
+{ "description": "start station id", 
+"mode": "NULLABLE", 
+"name": "start_station_id", 
+"type": "STRING" }, 
+
+{ "description": "end station name", 
+"mode": "NULLABLE", 
+"name": "end_station_name", 
+"type": "STRING" }, 
+
+{ "description": "end station id", 
+"mode": "NULLABLE", 
+"name": "end_station_id", 
+"type": "STRING" }, 
+
+{ "description": "start latitude", 
+"mode": "NULLABLE", 
+"name": "start_lat", 
+"type": "FLOAT" }, 
+
+{ "description": "start longitude", 
+"mode": "NULLABLE", 
+"name": "start_lng", 
+"type": "FLOAT" }, 
+
+{ "description": "end latitude", 
+"mode": "NULLABLE", 
+"name": "end_lat", 
+"type": "FLOAT" }, 
+
+{ "description": "end longitude", 
+"mode": "NULLABLE", 
+"name": "end_lng", 
+"type": "FLOAT" }, 
+
+{ "description": "member or casual", 
+"mode": "NULLABLE", 
+"name": "member_casual", 
+"type": "STRING" }, 
+
+{ "description": "ride length", 
+"mode": "NULLABLE", 
+"name": "ride_length", 
+"type": "TIME" }, 
+
+{ "description": "day of week", 
+"mode": "NULLABLE", 
+"name": "day_of_week", 
+"type": "INTEGER" }, 
+
+{ "description": "season", 
+"mode": "NULLABLE", 
+"name": "season", 
+"type": "STRING" }, 
+
+{ "description": "ride length in seconds", 
+"mode": "NULLABLE", 
+"name": "ride_length_secs", 
+"type": "INTEGER" }, 
+
+
+{ "description": "start date", 
+"mode": "NULLABLE", 
+"name": "start_date", 
+"type": "DATE" }, 
+
+{ "description": "start time", 
+"mode": "NULLABLE", 
+"name": "start_time", 
+"type": "TIME" } 
+]
