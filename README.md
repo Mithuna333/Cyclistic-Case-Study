@@ -35,7 +35,7 @@ Primary Stakeholder: Cyclistic Executive Team
 Secondary Stakeholder: The director of marketing and Cyclistic marketing analytics team are the secondary stakeholders. The director of marketing and the analytics team will use the insights gathered from the analysis to develop campaigns promoting Cyclistic in a way that targets the conversion of casual riders to members. 
 
 ## Prepare
-The data for this project was obtained [here](file:///C:/Mithuna/Data%20Analytics/Case%20Study%201/Case-Study-1.pdf), which is provided by Motivate International Inc. under this [license](https://ride.divvybikes.com/data-license-agreement). Data from July 2022 to June 2023 were used as the historical data for Cyclistic. 
+The data for this project was obtained [here](https://divvy-tripdata.s3.amazonaws.com/index.html), which is provided by Motivate International Inc. under this [license](https://ride.divvybikes.com/data-license-agreement). Data from July 2022 to June 2023 were used as the historical data for Cyclistic. 
 
 Each data file is organized as follows:
 * ride_id
@@ -73,7 +73,7 @@ The data's integrity was checked using Excel by checking for missing values, ens
 During this phase, the data was processed for analysis. This was done using multiple tools so the steps will be outlined accoring to each tool used. 
 
 Excel processing steps:
-1) Added ride_length column by subtracting started_at from ended_at to determine the total ride length.
+1) Added ride_length column by subtracting started_at from ended_at to determine the total ride length, formatted as hh:mm:ss.
 2) Added season column according to the following months:
    * Spring: March-May
    * Summer: June-August
@@ -82,7 +82,8 @@ Excel processing steps:
 3) Removed duplicates with the excel function of the same name.
 4) Removed data outside of the ride_length of 0:01:00 and 2:59:59
    * The data outside this range was deemed irrelevant as data under the range did not change locations in the 59 seconds that was recorded as the ride length. This data was most likely a case of customers changing their mind after starting the ride. The data over 3 hours was very few and contained extreme outliers. Data outside this range comprised of less than 4% of the total data so there was no issue in excluding them.
-5) Removed data without end latitude and longitude or data with 0 for end latitude and longitude.
+5) Added a column titled ride_length_secs with values being ride_length values converted from hh:mm:ss to seconds. 
+6) Removed data without end latitude and longitude or data with 0 for end latitude and longitude.
    * These data were incorrect.
 7) Added a column for start_date and start_time for hourly trend.
 
@@ -108,4 +109,28 @@ _cyclistic_df$end_station_id[cyclistic_df$end_station_id == ''] <- '22222'_
 _write.csv(cyclistic_df, "C:/Mithuna/Data Analytics/Case Study 1/output_r/cyclistic_df.csv", row.names = FALSE )_
 
 SQL processing steps:
-1) The csv file was imported into SQL using custom schema
+1) The csv file was imported into SQL using [custom schema](https://github.com/Mithuna333/Cyclistic-Case-Study/blob/main/SQL%20Custom%20Schema)
+
+2) Data used for testing, labeled with the tags "Test", "Temp", "Check", and "Divvy" in the start_station_name or end_station_name were removed with the following code:
+![image](https://github.com/Mithuna333/Cyclistic-Case-Study/assets/141884378/2083b487-6192-4f6d-affd-f23f802f183a)
+
+3) Data was double checked to ensure there are no [null values](https://github.com/Mithuna333/Cyclistic-Case-Study/blob/main/SQL%20Checking%20Null%20Values).
+
+4) The necessary columns were selected for export with the following code:
+![image](https://github.com/Mithuna333/Cyclistic-Case-Study/assets/141884378/f743ecdb-aeca-4ee3-a10c-8bb6ddcbdc1f)
+
+This completes the processing steps for the case study. 
+
+## Analyze
+For this case study, Tableau was enough to analyze and create important visuals. The following trends were analyzed using Tableau:
+* Distribution of the type of customers, member and casual.
+* The average ride length in seconds for each customer type. This was converted to minutes in Excel later.
+* Bike preference by customer type.
+* Total ride count by season, month, and day of week for each customer type.
+* Average ride length in seconds for each customer type by season, month, and day of week. This was converted to minutes in Excel later.
+
+## Share
+The Tableau dashboard with all the visuals associated with the case study can be found [here](link here).
+
+## Act
+The top 3 recommendations based on the insights gathered can be found in the [stakeholder presentation](https://github.com/Mithuna333/Cyclistic-Case-Study/blob/main/Cyclistic%20Bike%20Share.pptx).
