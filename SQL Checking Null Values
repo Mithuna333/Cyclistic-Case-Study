@@ -1,0 +1,40 @@
+The following code was used to check for null values in SQL:
+
+SELECT 
+	*
+FROM 
+  `cyclisticcasestudy-394918.cyclistic_data.cyclistic_clean`
+WHERE	
+  ride_id IS NULL
+  OR
+  ride_length IS NULL
+  OR
+  ride_length_secs IS NULL
+  OR
+  start_date IS NULL
+  OR
+  start_lat IS NULL
+  OR
+  start_lng IS NULL
+  OR
+  start_station_id IS NULL
+  OR
+  start_station_name IS NULL
+  OR
+  start_time IS NULL
+  OR
+  started_at IS NULL
+  OR
+  end_lat IS NULL
+  OR
+  end_lng IS NULL
+  OR
+  end_station_id IS NULL
+  OR
+  end_station_name IS NULL
+  OR
+  season IS NULL
+  OR
+  day_of_week IS NULL
+  OR
+  member_casual IS NULL
